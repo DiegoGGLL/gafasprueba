@@ -6,7 +6,7 @@
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene shadow="type: pcfsoft" background="color: #ECECEC">
+    <a-scene xr-mode-ui="XRMode:xr" shadow="type: pcfsoft" background="color: #ECECEC">
 
       <!-- Cámara -->
       <a-entity camera position="0 3 8" look-controls></a-entity>
@@ -18,7 +18,7 @@
       </a-entity>
 
       <!-- Suelo con degradado en base64 -->
-      <a-assets>
+      <a-assets hide-on-enter-ar>
         <img id="gradientTexture" crossorigin="anonymous"
              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAACgCAYAAABKuEInAAAAFUlEQVR4nGNgYGBg+M+ABRgYGJgAADE4AAEdwt/MAAAAAElFTkSuQmCC"/>
       </a-assets>
