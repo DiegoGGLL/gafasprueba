@@ -2,12 +2,11 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Escena con Perrito 3D</title>
+    <title>Escena con Perrito</title>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
-
       <!-- Objetos originales -->
       <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
@@ -16,15 +15,16 @@
       <a-sky color="#ECECEC"></a-sky>
       <a-box position="-3 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
 
-      <!-- Perrito 3D animado -->
-      <a-entity
-        id="perrito"
-        position="0 0.2 -2"
+      <!-- Perrito GLB -->
+      <a-entity 
+        position="0 0 -2" 
         scale="0.5 0.5 0.5"
-        gltf-model="url(https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models/2.0/Fox/glTF/Fox.gltf)"
-        animation="property: position; to: 1 0.2 -2; dir: alternate; dur: 2000; loop: true"
+        gltf-model="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Duck/glTF-Binary/Duck.glb"
+        animation="property: position; to: 1 0 -2; dir: alternate; dur: 2000; loop: true"
       ></a-entity>
 
+      <!-- Cámara -->
+      <a-entity camera look-controls position="0 1.6 5"></a-entity>
     </a-scene>
   </body>
 </html>
