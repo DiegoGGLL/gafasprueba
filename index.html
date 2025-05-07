@@ -2,39 +2,39 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Escena con Coche y Moto en A-Frame</title>
+    <title>Escena Realista con Coche y Moto</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
 
       <!-- Suelo -->
-      <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
-
-      <!-- Luz -->
-      <a-light type="directional" position="2 4 -3" intensity="1"></a-light>
-      <a-light type="ambient" color="#ccc"></a-light>
+      <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
 
       <!-- Cámara -->
       <a-entity position="0 2 10">
-        <a-camera></a-camera>
+        <a-camera wasd-controls look-controls></a-camera>
       </a-entity>
 
-      <!-- Coche (representado con cajas y cilindros) -->
-      <a-box position="-3 0.5 0" depth="2" height="0.5" width="3" color="red"></a-box>
-      <a-box position="-3 1 0" depth="1.5" height="0.5" width="2" color="#AA0000"></a-box>
-      <!-- Ruedas del coche -->
-      <a-cylinder position="-4.2 0.2 0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
-      <a-cylinder position="-1.8 0.2 0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
-      <a-cylinder position="-4.2 0.2 -0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
-      <a-cylinder position="-1.8 0.2 -0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
+      <!-- Luces -->
+      <a-light type="ambient" intensity="0.5"></a-light>
+      <a-light type="directional" position="5 10 7" intensity="1" castShadow="true"></a-light>
 
-      <!-- Moto (estructura más pequeña) -->
-      <a-box position="3 0.6 0" depth="0.3" height="0.2" width="1.2" color="blue"></a-box>
-      <a-box position="3 0.8 0" depth="0.2" height="0.4" width="0.3" color="#0000AA"></a-box>
-      <!-- Ruedas de la moto -->
-      <a-cylinder position="2.4 0.2 0" radius="0.25" height="0.1" rotation="90 0 0" color="black"></a-cylinder>
-      <a-cylinder position="3.6 0.2 0" radius="0.25" height="0.1" rotation="90 0 0" color="black"></a-cylinder>
+      <!-- Coche 3D -->
+      <a-entity 
+        gltf-model="url(https://fetchcfd.com/threeDViewGltf/1500-sedan-car-3d-model)"
+        position="-3 0 0"
+        scale="0.5 0.5 0.5"
+        rotation="0 90 0">
+      </a-entity>
+
+      <!-- Moto 3D -->
+      <a-entity 
+        gltf-model="url(https://fetchcfd.com/threeDViewGltf/3045)"
+        position="3 0 0"
+        scale="0.5 0.5 0.5"
+        rotation="0 -90 0">
+      </a-entity>
 
     </a-scene>
   </body>
