@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Escena con Perrito</title>
-    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <meta charset="utf-8">
+    <title>Escena con Coche y Moto en A-Frame</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
-      <!-- Objetos originales -->
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
-      <a-box position="-3 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
 
-      <!-- Perrito GLB -->
-      <a-entity 
-        position="0 0 -2" 
-        scale="0.5 0.5 0.5"
-        gltf-model="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Duck/glTF-Binary/Duck.glb"
-        animation="property: position; to: 1 0 -2; dir: alternate; dur: 2000; loop: true"
-      ></a-entity>
+      <!-- Suelo -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
+
+      <!-- Luz -->
+      <a-light type="directional" position="2 4 -3" intensity="1"></a-light>
+      <a-light type="ambient" color="#ccc"></a-light>
 
       <!-- Cámara -->
-      <a-entity camera look-controls position="0 1.6 5"></a-entity>
+      <a-entity position="0 2 10">
+        <a-camera></a-camera>
+      </a-entity>
+
+      <!-- Coche (representado con cajas y cilindros) -->
+      <a-box position="-3 0.5 0" depth="2" height="0.5" width="3" color="red"></a-box>
+      <a-box position="-3 1 0" depth="1.5" height="0.5" width="2" color="#AA0000"></a-box>
+      <!-- Ruedas del coche -->
+      <a-cylinder position="-4.2 0.2 0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
+      <a-cylinder position="-1.8 0.2 0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
+      <a-cylinder position="-4.2 0.2 -0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
+      <a-cylinder position="-1.8 0.2 -0.8" radius="0.4" height="0.2" rotation="90 0 0" color="black"></a-cylinder>
+
+      <!-- Moto (estructura más pequeña) -->
+      <a-box position="3 0.6 0" depth="0.3" height="0.2" width="1.2" color="blue"></a-box>
+      <a-box position="3 0.8 0" depth="0.2" height="0.4" width="0.3" color="#0000AA"></a-box>
+      <!-- Ruedas de la moto -->
+      <a-cylinder position="2.4 0.2 0" radius="0.25" height="0.1" rotation="90 0 0" color="black"></a-cylinder>
+      <a-cylinder position="3.6 0.2 0" radius="0.25" height="0.1" rotation="90 0 0" color="black"></a-cylinder>
+
     </a-scene>
   </body>
 </html>
