@@ -2,39 +2,81 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Escena Realista con Coche y Moto</title>
+    <title>Pelota Botando con Sombra Dinámica</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
-
-      <!-- Suelo -->
-      <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
+    <a-scene shadow="type: pcfsoft" background="color: #ECECEC">
 
       <!-- Cámara -->
-      <a-entity position="0 2 10">
-        <a-camera wasd-controls look-controls></a-camera>
-      </a-entity>
+      <a-entity camera position="0 3 8" look-controls></a-entity>
 
-      <!-- Luces -->
-      <a-light type="ambient" intensity="0.5"></a-light>
-      <a-light type="directional" position="5 10 7" intensity="1" castShadow="true"></a-light>
-
-      <!-- Coche 3D -->
+      <!-- Luz encima de la pelota -->
       <a-entity 
-        gltf-model="url(https://fetchcfd.com/threeDViewGltf/1500-sedan-car-3d-model)"
-        position="-3 0 0"
-        scale="0.5 0.5 0.5"
-        rotation="0 90 0">
+        light="type: directional; intensity: 0.9; castShadow: true" 
+        position="0 5 0" 
+        rotation="-90 0 0">
       </a-entity>
 
-      <!-- Moto 3D -->
-      <a-entity 
-        gltf-model="url(https://fetchcfd.com/threeDViewGltf/3045-ducati-motorcycle-3d-model)"
-        position="3 0 0"
-        scale="0.5 0.5 0.5"
-        rotation="0 -90 0">
-      </a-entity>
+      <!-- Suelo con degradado -->
+      <a-plane 
+        position="0 0 0" 
+        rotation="-90 0 0" 
+        width="10" 
+        height="10"
+        material="shader: flat; src: #gradientTexture"
+        receive-shadow="true">
+      </a-plane>
+
+      <!-- Pelota -->
+      <a-sphere 
+        id="ball"
+        position="0 1 0" 
+        radius="0.3" 
+        color="orange"
+        shadow="cast: true">
+        <a-animation 
+          attribute="position" 
+          direction="alternate" 
+          dur="800" 
+          repeat="indefinite" 
+          to="0 3 0" 
+          easing="ease-in-out">
+        </a-animation>
+      </a-sphere>
+
+      <!-- Sombra (círculo negro que se escala según el bote) -->
+      <a-circle 
+        id="shadow"
+        position="0 0.01 0" 
+        rotation="-90 0 0" 
+        radius="0.4" 
+        color="black" 
+        opacity="0.3"
+        material="shader: flat">
+        <a-animation 
+          attribute="scale" 
+          direction="alternate" 
+          dur="800" 
+          repeat="indefinite" 
+          to="1.5 1.5 1" 
+          easing="ease-in-out">
+        </a-animation>
+      </a-circle>
+
+      <!-- Textura del degradado -->
+      <a-assets>
+        <img id="gradientTexture" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'>
+            <defs>
+              <linearGradient id='grad' x1='0%' y1='0%' x2='0%' y2='100%'>
+                <stop offset='0%' style='stop-color: #4facfe; stop-opacity:1' />
+                <stop offset='100%' style='stop-color: #00f2fe; stop-opacity:1' />
+              </linearGradient>
+            </defs>
+            <rect width='100%' height='100%' fill='url(#grad)' />
+          </svg>"/>
+      </a-assets>
 
     </a-scene>
   </body>
